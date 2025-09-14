@@ -1,0 +1,213 @@
+[
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.AuthorizationController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/Authorization/confirm-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.AuthorizationController",
+    "Method": "Login",
+    "RelativePath": "api/Authorization/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "EvTap.Contracts.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.AuthorizationController",
+    "Method": "LogOut",
+    "RelativePath": "api/Authorization/LogOut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.AuthorizationController",
+    "Method": "Register",
+    "RelativePath": "api/Authorization/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDTO",
+        "Type": "EvTap.Contracts.DTOs.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.CityController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/City",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cityDTO",
+        "Type": "EvTap.Contracts.DTOs.CityDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.CityController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/City/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.CityController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/City/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.CityController",
+    "Method": "AddAsync",
+    "RelativePath": "api/City/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cityDTO",
+        "Type": "EvTap.Contracts.DTOs.CityDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.CityController",
+    "Method": "GetAllAsync",
+    "RelativePath": "api/City/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.DictrictController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/Dictrict",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "districtDTO",
+        "Type": "EvTap.Contracts.DTOs.DistrictDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.DictrictController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/Dictrict/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.DictrictController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/Dictrict/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.DictrictController",
+    "Method": "AddAsync",
+    "RelativePath": "api/Dictrict/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "districtDTO",
+        "Type": "EvTap.Contracts.DTOs.DistrictDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvTap.Presentation.Controllers.DictrictController",
+    "Method": "GetAllAsync",
+    "RelativePath": "api/Dictrict/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
