@@ -546,3 +546,5 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\bin\Debug\net8.0\Quartz.AspN
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\bin\Debug\net8.0\Serilog.Sinks.Async.dll
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\obj\Debug\net8.0\EvTap.Presentation.sourcelink.json
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Presentation\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

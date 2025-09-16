@@ -19,5 +19,14 @@ namespace EvTap.Presentation.Controllers
 
        
 
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRole([FromBody] AssignRoleDTO userRoleDTO)
+        {
+            var result = await _roleService.AssignRoleAsync(userRoleDTO);
+            return Ok(result);
+        }
+
+
+
     }
 }

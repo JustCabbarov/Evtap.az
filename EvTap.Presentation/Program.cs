@@ -2,6 +2,7 @@
 using EvTap.Application.Exceptions;
 using EvTap.Application.Profiles;
 using EvTap.Application.Services;
+using EvTap.Contracts.Options;
 using EvTap.Contracts.Services;
 using EvTap.Domain.Entities;
 using EvTap.Domain.Repositories;
@@ -10,6 +11,7 @@ using EvTap.Infrastructure.Services;
 using EvTap.Persistence.Data;
 using EvTap.Persistence.Repositories;
 using EvTap.Presentation.ExceptionHandler;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -51,6 +53,8 @@ builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
 builder.Services.AddExceptionHandler<NullExceptionHandler>();
 builder.Services.AddExceptionHandler<UnauthorizedExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddScoped<ITokenHnadler,TokenHandler>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 
 builder.Services.AddAutoMapper(m =>
 {
@@ -81,7 +85,33 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(OptionsBuilderConfigurationExtensions =>
+{
+  
+    OptionsBuilderConfigurationExtensions.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+    };
+});
+
+builder.Services.Configure<JwtOption>(builder.Configuration.GetSection("Jwt"));
+
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var roleService = scope.ServiceProvider.GetRequiredService<IRoleService>();
+    await roleService.SeedRolesAsync();
+}
 
 // Swagger
 if (app.Environment.IsDevelopment())

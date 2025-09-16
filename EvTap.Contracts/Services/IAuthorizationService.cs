@@ -10,7 +10,7 @@ namespace EvTap.Contracts.Services
 {
     public interface IAuthorizationService
     {
-        Task<IdentityResult> LoginAsync(LoginDTO loginDTO);
+        Task<string> LoginAsync(LoginDTO loginDTO);
         Task<IdentityResult> RegisterAsync(RegisterDTO registerDTO);
         Task LogoutAsync();
         Task<IdentityResult> ConfirmEmailAsync(string userId, string token);

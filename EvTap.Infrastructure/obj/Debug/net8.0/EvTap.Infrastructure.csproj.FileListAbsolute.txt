@@ -359,3 +359,4 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Infrastructure\bin\Debug\net8.0\.playwrig
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Infrastructure\bin\Debug\net8.0\playwright.ps1
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Infrastructure\bin\Debug\net8.0\EvTap.Persistence.dll
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Infrastructure\bin\Debug\net8.0\EvTap.Persistence.pdb
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Infrastructure\obj\Debug\net8.0\EvTap.Infrastructure.sourcelink.json

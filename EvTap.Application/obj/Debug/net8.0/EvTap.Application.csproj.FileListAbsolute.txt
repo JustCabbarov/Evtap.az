@@ -15,3 +15,4 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Application\bin\Debug\net8.0\EvTap.Contra
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Application\bin\Debug\net8.0\EvTap.Domain.pdb
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Application\obj\Debug\net8.0\EvTap.Application.csproj.AssemblyReference.cache
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Application\obj\Debug\net8.0\EvTap.Ap.09D9C6B9.Up2Date
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Application\obj\Debug\net8.0\EvTap.Application.sourcelink.json

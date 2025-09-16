@@ -15,3 +15,4 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Persistence\obj\Debug\net8.0\refint\EvTap
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Persistence\obj\Debug\net8.0\EvTap.Persistence.pdb
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Persistence\obj\Debug\net8.0\EvTap.Persistence.genruntimeconfig.cache
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Persistence\obj\Debug\net8.0\ref\EvTap.Persistence.dll
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Persistence\obj\Debug\net8.0\EvTap.Persistence.sourcelink.json

@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EvTap.Domain.Entities
+namespace EvTap.Contracts.DTOs
 {
-    public class MetroStations : BaseEntity
+    public class MetroStationDTO
     {
         public string Name { get; set; }
-
-        public int LocationId { get; set; }
-        public Location Location { get; set; }
-
     }
 }

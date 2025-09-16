@@ -18,6 +18,7 @@ namespace EvTap.Application.Services
         private readonly IEmailService _emailService;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<AuthorizationService> _logger;
+        private readonly ITokenHnadler _tokenHandler;
 
 
 
@@ -26,13 +27,15 @@ namespace EvTap.Application.Services
             SignInManager<ApplicationUser> signInManager,
             IEmailService emailService,
             RoleManager<IdentityRole> roleManager,
-            ILogger<AuthorizationService> logger)
+            ILogger<AuthorizationService> logger,
+            ITokenHnadler tokenHandler)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
             _roleManager = roleManager;
             _logger = logger;
+            _tokenHandler = tokenHandler;
         }
 
         public async Task<IdentityResult> RegisterAsync(RegisterDTO registerDTO)
@@ -110,7 +113,7 @@ namespace EvTap.Application.Services
 
 
 
-        public async Task<IdentityResult> LoginAsync(LoginDTO loginDTO)
+        public async Task<string> LoginAsync(LoginDTO loginDTO)
         {
             var user = await _userManager.FindByEmailAsync(loginDTO.Email);
             if (user == null)
@@ -124,13 +127,14 @@ namespace EvTap.Application.Services
             if (result.Succeeded)
             {
                _logger.LogInformation($"User Login in: {user.Email}");
-                return IdentityResult.Success;
+              var token=  await _tokenHandler.CreateAccessTokenAsync(user);
+                return token;
 
             }
             else
             {
                 _logger.LogWarning($"Invalid login attempt for user: {loginDTO.Email}");
-                throw new UnauthorizedException("Invalid login attempt.");
+                return $"Invalid login attempt for user";
             }
         }
 

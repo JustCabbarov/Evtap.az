@@ -21,7 +21,8 @@ namespace EvTap.Persistence.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Agency> Agencies { get; set; }
-        public DbSet<MetroStations> MetroStations { get; set; }
+        public DbSet<MetroStation> MetroStations { get; set; }
+        public DbSet<ListingMetro> listingMetros { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<ListingFutures> ListingFutures { get; set; }
@@ -45,7 +46,13 @@ namespace EvTap.Persistence.Data
                 .HasOne(m => m.Receiver)
                 .WithMany(u => u.ReceivedMessages)
                 .HasForeignKey(m => m.ReceiverId).OnDelete(DeleteBehavior.Restrict);
-        }
+
+                base.OnModelCreating(builder);
+
+            builder.Entity<ListingMetro>()
+                .HasKey(lm => new { lm.ListingId, lm.MetroStationId });
+        
+    }
     }
 
 

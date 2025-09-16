@@ -11,7 +11,7 @@ namespace EvTap.Domain.Entities
 
       
         
-            public int Id { get; set; } // PK
+            public int Id { get; set; } 
             public string ExternalId { get; set; } = "";
             public string? City { get; set; } = "";
             public string? Location { get; set; } = "";
@@ -23,7 +23,7 @@ namespace EvTap.Domain.Entities
             public int? Floor { get; set; }
             public int? TotalFloors { get; set; }
 
-            // bool-lar default olaraq false
+       
             public bool? HasRepair { get; set; } 
             public bool? HasMortgage { get; set; } 
             public bool? HasBillOfSale { get; set; } 
@@ -31,7 +31,7 @@ namespace EvTap.Domain.Entities
             public bool? Vipped { get; set; } 
             public bool? Featured { get; set; }
 
-        // datetime-lar nullable
+       
         public DateTime? UpdatedAt
         {
             get => _updatedAt;

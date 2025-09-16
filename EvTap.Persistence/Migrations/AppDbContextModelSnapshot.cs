@@ -112,9 +112,6 @@ namespace EvTap.Persistence.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AgencyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -163,8 +160,6 @@ namespace EvTap.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AgencyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -260,7 +255,208 @@ namespace EvTap.Persistence.Migrations
                     b.ToTable("Districts");
                 });
 
-            modelBuilder.Entity("EvTap.Domain.Entities.Listing", b =>
+            modelBuilder.Entity("EvTap.Domain.Entities.ListingFutures", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ListingFutures");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.ListingImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCover")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ListingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ListingId");
+
+                    b.ToTable("ListingImages");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.ListingMetro", b =>
+                {
+                    b.Property<int>("ListingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MetroStationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ListingId", "MetroStationId");
+
+                    b.HasIndex("MetroStationId");
+
+                    b.ToTable("listingMetros");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DistrictId");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.MetroStation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MetroStations");
+                });
+
+            modelBuilder.Entity("Listing", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -341,185 +537,6 @@ namespace EvTap.Persistence.Migrations
                     b.HasIndex("UserId1");
 
                     b.ToTable("Listings");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.ListingFutures", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ListingFutures");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.ListingImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsCover")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ListingId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ListingId");
-
-                    b.ToTable("ListingImages");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.Location", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DistrictId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<double?>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DistrictId");
-
-                    b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.Message", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ReadAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReceiverId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("SenderId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("SentAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReceiverId");
-
-                    b.HasIndex("SenderId");
-
-                    b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.MetroStations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
-
-                    b.ToTable("MetroStations");
                 });
 
             modelBuilder.Entity("ListingListingFutures", b =>
@@ -672,20 +689,13 @@ namespace EvTap.Persistence.Migrations
 
             modelBuilder.Entity("EvTap.Domain.Entities.AIAnalysisRequest", b =>
                 {
-                    b.HasOne("EvTap.Domain.Entities.Listing", "Listing")
+                    b.HasOne("Listing", "Listing")
                         .WithMany()
                         .HasForeignKey("ListingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Listing");
-                });
-
-            modelBuilder.Entity("EvTap.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.HasOne("EvTap.Domain.Entities.Agency", null)
-                        .WithMany("Agents")
-                        .HasForeignKey("AgencyId");
                 });
 
             modelBuilder.Entity("EvTap.Domain.Entities.District", b =>
@@ -699,40 +709,9 @@ namespace EvTap.Persistence.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("EvTap.Domain.Entities.Listing", b =>
-                {
-                    b.HasOne("EvTap.Domain.Entities.Agency", "Agency")
-                        .WithMany("Listings")
-                        .HasForeignKey("AgencyId");
-
-                    b.HasOne("EvTap.Domain.Entities.Category", "Category")
-                        .WithMany("Listings")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EvTap.Domain.Entities.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EvTap.Domain.Entities.ApplicationUser", "User")
-                        .WithMany("Listings")
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("Agency");
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Location");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("EvTap.Domain.Entities.ListingImage", b =>
                 {
-                    b.HasOne("EvTap.Domain.Entities.Listing", "Listing")
+                    b.HasOne("Listing", "Listing")
                         .WithMany("Images")
                         .HasForeignKey("ListingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -741,13 +720,30 @@ namespace EvTap.Persistence.Migrations
                     b.Navigation("Listing");
                 });
 
+            modelBuilder.Entity("EvTap.Domain.Entities.ListingMetro", b =>
+                {
+                    b.HasOne("Listing", "Listing")
+                        .WithMany("ListingMetros")
+                        .HasForeignKey("ListingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EvTap.Domain.Entities.MetroStation", "MetroStation")
+                        .WithMany("ListingMetros")
+                        .HasForeignKey("MetroStationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Listing");
+
+                    b.Navigation("MetroStation");
+                });
+
             modelBuilder.Entity("EvTap.Domain.Entities.Location", b =>
                 {
                     b.HasOne("EvTap.Domain.Entities.District", "District")
                         .WithMany("Locations")
-                        .HasForeignKey("DistrictId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DistrictId");
 
                     b.Navigation("District");
                 });
@@ -771,15 +767,35 @@ namespace EvTap.Persistence.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("EvTap.Domain.Entities.MetroStations", b =>
+            modelBuilder.Entity("Listing", b =>
                 {
+                    b.HasOne("EvTap.Domain.Entities.Agency", "Agency")
+                        .WithMany("Listings")
+                        .HasForeignKey("AgencyId");
+
+                    b.HasOne("EvTap.Domain.Entities.Category", "Category")
+                        .WithMany("Listings")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EvTap.Domain.Entities.Location", "Location")
-                        .WithMany("MetroStations")
+                        .WithMany("Listings")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EvTap.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Listings")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Agency");
+
+                    b.Navigation("Category");
+
                     b.Navigation("Location");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ListingListingFutures", b =>
@@ -790,7 +806,7 @@ namespace EvTap.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EvTap.Domain.Entities.Listing", null)
+                    b.HasOne("Listing", null)
                         .WithMany()
                         .HasForeignKey("ListingsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -850,8 +866,6 @@ namespace EvTap.Persistence.Migrations
 
             modelBuilder.Entity("EvTap.Domain.Entities.Agency", b =>
                 {
-                    b.Navigation("Agents");
-
                     b.Navigation("Listings");
                 });
 
@@ -879,14 +893,21 @@ namespace EvTap.Persistence.Migrations
                     b.Navigation("Locations");
                 });
 
-            modelBuilder.Entity("EvTap.Domain.Entities.Listing", b =>
-                {
-                    b.Navigation("Images");
-                });
-
             modelBuilder.Entity("EvTap.Domain.Entities.Location", b =>
                 {
-                    b.Navigation("MetroStations");
+                    b.Navigation("Listings");
+                });
+
+            modelBuilder.Entity("EvTap.Domain.Entities.MetroStation", b =>
+                {
+                    b.Navigation("ListingMetros");
+                });
+
+            modelBuilder.Entity("Listing", b =>
+                {
+                    b.Navigation("Images");
+
+                    b.Navigation("ListingMetros");
                 });
 #pragma warning restore 612, 618
         }

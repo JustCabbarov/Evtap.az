@@ -36,15 +36,17 @@ namespace EvTap.Presentation.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
+            if(loginDTO == null)
+            {
+                throw new NotNullExceptions("Login data cannot be null");
+            }
             var result = await _authorizationService.LoginAsync(loginDTO);
-            if (result.Succeeded)
+            if(result== null)
             {
-                return Ok(new { Message = "User logged in successfully" });
+                throw new UnauthorizedException( "Invalid credentials or email not confirmed" );
             }
-            else
-            {
-                return Unauthorized(new { Message = "Invalid login attempt" });
-            }
+            return Ok(new { Token = result });
+
         }
 
         [HttpPost("LogOut")]

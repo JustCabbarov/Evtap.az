@@ -12,3 +12,4 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Domain\obj\Debug\net8.0\refint\EvTap.Doma
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Domain\obj\Debug\net8.0\EvTap.Domain.pdb
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Domain\obj\Debug\net8.0\EvTap.Domain.genruntimeconfig.cache
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Domain\obj\Debug\net8.0\ref\EvTap.Domain.dll
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Domain\obj\Debug\net8.0\EvTap.Domain.sourcelink.json

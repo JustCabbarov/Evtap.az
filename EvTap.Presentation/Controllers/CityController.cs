@@ -29,6 +29,7 @@ namespace EvTap.Presentation.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
+
             var city = await _genericService.GetByIdAsync(id);
             return Ok(city);
         }

@@ -103,17 +103,28 @@ namespace EvTap.Infrastructure.Jobs
                         ExternalId = node["id"]?.ToString() ?? "",
                         City = node["city"]?["name"]?.ToString() ?? "",
                         Location = node["location"]?["name"]?.ToString() ?? "",
-                        Price = node["price"]?["value"]?.ToObject<decimal>() ?? 0,
+                        Price = node["price"]?["value"]?.ToObject<decimal?>() ?? 0,
                         Currency = node["price"]?["currency"]?.ToString() ?? "",
-                        Area = node["area"]?["value"]?.ToObject<double>() ?? 0,
+                        Area = node["area"]?["value"]?.ToObject<double?>() ?? 0,
                         AreaUnit = node["area"]?["units"]?.ToString() ?? "",
-                        Rooms = node["rooms"]?.ToObject<int?>(),
-                        Floor = node["floor"]?.ToObject<int?>(),
-                        TotalFloors = node["totalFloors"]?.ToObject<int?>(),
+                        Rooms = node["rooms"]?.ToObject<int?>() ?? 0,
+                        Floor = node["floor"]?.ToObject<int?>() ?? 0,
+                        TotalFloors = node["totalFloors"]?.ToObject<int?>() ?? 0,
+
+                        // bool-lar default olaraq false
+                        HasRepair = node["hasRepair"]?.ToObject<bool?>() ?? false,
+                        HasMortgage = node["hasMortgage"]?.ToObject<bool?>() ?? false,
+                        HasBillOfSale = node["hasBillOfSale"]?.ToObject<bool?>() ?? false,
+                        Leased = node["leased"]?.ToObject<bool?>() ?? false,
+                        Vipped = node["vipped"]?.ToObject<bool?>() ?? false,
+                        Featured = node["featured"]?.ToObject<bool?>() ?? false,
+
+                        // datetime-lar nullable, default olaraq null qalacaq
                         UpdatedAt = node["updatedAt"]?.ToObject<DateTime?>(),
                         CreatedAt = node["createdAt"]?.ToObject<DateTime?>(),
                         PublishedAt = node["publishedAt"]?.ToObject<DateTime?>()
                     };
+
 
                     await _scrapingRepository.AddAsync(scrapingData);
                 }

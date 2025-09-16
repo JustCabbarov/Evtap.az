@@ -25,7 +25,7 @@ namespace EvTap.Application.Services
         
         public async Task SeedRolesAsync()
         {
-            string[] roles = { "Admin", "User" };
+            string[] roles = { "Admin", "User","Agency" };
             foreach (var role in roles)
             {
                 if (!await _roleManager.RoleExistsAsync(role))

@@ -14,7 +14,7 @@ namespace EvTap.Domain.Entities
         public string Email { get; set; }
         public string Address { get; set; }
         
-        public ICollection<ApplicationUser> Agents { get; set; }
+          
         public ICollection<Listing>? Listings { get; set; }
     }
 }

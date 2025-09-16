@@ -13,3 +13,4 @@ C:\Users\Huawei\Desktop\EvTap.az\EvTap.Contracts\obj\Debug\net8.0\EvTap.Contract
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Contracts\obj\Debug\net8.0\refint\EvTap.Contracts.dll
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Contracts\obj\Debug\net8.0\EvTap.Contracts.pdb
 C:\Users\Huawei\Desktop\EvTap.az\EvTap.Contracts\obj\Debug\net8.0\ref\EvTap.Contracts.dll
+C:\Users\Huawei\Desktop\EvTap.az\EvTap.Contracts\obj\Debug\net8.0\EvTap.Contracts.sourcelink.json

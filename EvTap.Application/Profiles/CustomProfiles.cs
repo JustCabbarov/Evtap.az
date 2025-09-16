@@ -15,6 +15,12 @@ namespace EvTap.Application.Profiles
         {
             CreateMap<City, CityDTO>().ReverseMap();
             CreateMap<District, DistrictDTO>().ReverseMap();
+            CreateMap<MetroStation, MetroStationDTO>().ReverseMap();
+            CreateMap<AgencyDTO, Agency>().ReverseMap();
+            CreateMap<CategoryDTO, Category>().ReverseMap();
+           
+         
+        
         }
     }
 }
